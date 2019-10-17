@@ -1,24 +1,57 @@
-const Dollars = (props) => <div>Wartośc w dolarach: {props.amount <= 0 ? "" : (props.amount/props.exchange).toFixed(2)}</div>
-const Euros = (props) => <div>Wartośc w euro: {props.amount <= 0 ? "" : (props.amount/props.exchange).toFixed(2)}</div>
-
-
+const Current = (props) => {
+    return (
+    <div>
+        {props.title}
+        {props.amount<=0 ? "" : (props.amount/props.ratio).toFixed(2)}
+    </div>
+    )
+};
 
 class App extends React.Component {
 
     state = {
         amount: "",
-        ratioDolar: 3.6,
-        ratioEuro: 4.2,
     }
+
+    currencies = [
+        {
+          id: 1,
+          name: 'dollar',
+          ratio: 3.6,
+          title: 'Wartość w dolarach: '
+        },
+        {
+          id: 2,
+          name: 'euro',
+          ratio: 4.1,
+          title: 'Wartość w euro: '
+        },
+        {
+          id: 3,
+          name: 'pound',
+          ratio: 4.55,
+          title: 'Wartość w funtach: '
+        },
+      ]
 
     handleChange = (e) => {
         this.setState({
             amount: e.target.value,
         })
-
-    }
+    } 
 
     render(){
+
+        const currencies = this.currencies.map(current => (
+        <Current 
+            key={current.id} 
+            title={current.title} 
+            amount={this.state.amount} 
+            ratio = {current.ratio}
+            name={current.name}
+            />
+        ))
+
         return(
             <div>
                 <label>
@@ -27,14 +60,7 @@ class App extends React.Component {
                     value = {this.state.amount}
                     onChange = {this.handleChange}/>
                 </label>
-                <Dollars 
-                    exchange={this.state.ratioDolar} 
-                    amount={this.state.amount}
-                />
-                <Euros 
-                    exchange={this.state.ratioEuro} 
-                    amount={this.state.amount}
-                />
+                {currencies}
             </div>
         )
     }
