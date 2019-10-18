@@ -11,8 +11,10 @@ class App extends React.Component {
 
     state = {
         amount: "",
+        product: "gas"
     }
 
+    
     currencies = [
         {
           id: 1,
@@ -40,6 +42,19 @@ class App extends React.Component {
         })
     } 
 
+    handleSelect = (e) => {
+        this.setState({
+            product: e.target.value,
+        })
+    } 
+
+    insertSuffix = (select) => {
+        if(select === "electricity") return <em> kWH</em>
+        else if(select === "gas") return <em> litrów</em>
+        else if(select === "oranges") return <em> kilogramów</em>
+        else return null
+    }
+
     render(){
 
         const currencies = this.currencies.map(current => (
@@ -54,11 +69,20 @@ class App extends React.Component {
 
         return(
             <div>
+                <label> Wybierz produkt:
+                    <select value={this.state.product} onChange={this.handleSelect}>
+                        <option value="electricity">prąd</option>
+                        <option value="gas">benzyna</option>
+                        <option value="oranges">pomarancze</option>
+                    </select>
+                </label>
+                <br/>
                 <label>
                     <input 
                     type = "number"
                     value = {this.state.amount}
                     onChange = {this.handleChange}/>
+                    {this.insertSuffix(this.state.product)}
                 </label>
                 {currencies}
             </div>
