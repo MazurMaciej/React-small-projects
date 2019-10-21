@@ -1,15 +1,15 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 
 
 class AddTask extends Component {
-    state = {  }
-    render() { 
+    state = {}
+    render() {
         return (
             <>
                 Dodaj task
             </>
-          );
+        )
     }
 }
- 
+
 export default AddTask;
