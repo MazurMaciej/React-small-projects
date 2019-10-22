@@ -3,9 +3,15 @@ import Task from './Task';
 
 const TaskList = (props) => {
 
-    const active = props.tasks.filter(task => task.active);
+    const activeList = props.tasks.filter(task => task.active);
 
-    const activeTasksList = active.map(task => {
+   activeList.sort((a,b)=>{
+        if(a.text < b.text) return -1;
+        if(a.text > b.text) return 1;
+        return 0
+   });
+   console.table(activeList)
+    const activeTasksList = activeList.map(task => {
         return (
             <Task
                 key={task.id}
@@ -21,11 +27,6 @@ const TaskList = (props) => {
         return b.finishDate - a.finishDate
     })
 
-    active.sort((a, b) => {
-        if (a.text < b.text) return -1;
-        if (a.text > b.text) return 1;
-        return 0
-    })
 
     const doneList = doneTasksList.map(task => {
         return (
