@@ -13,7 +13,7 @@ export const twitterAccounts = [
     {
         image: ryanFlorenceImage,
         name: 'Ryan Florence',
-        description: 'Making React accessible for users and developers at https://reach.tech . Online learning, workshops, OSS, and consulting.',
+        // description: 'Making React accessible for users and developers at https://reach.tech . Online learning, workshops, OSS, and consulting.',
         twitterLink: 'https://twitter.com/ryanflorence',
     },
     {
