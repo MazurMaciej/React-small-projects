@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,AAAC,CACL,OAAO,CAAE,IAAI,CACb,qBAAqB,CAAE,cAAc,CACxC,AAED,AAAA,QAAQ,AAAC,CACL,UAAU,CAAE,IAAI,CAUnB,AARI,AAAD,YAAK,AAAC,CACF,eAAe,CAAE,IAAI,CACrB,KAAK,CAAE,OAAO,CAKjB,AAHI,AAAD,kBAAO,AAAC,CACJ,WAAW,CAAE,GAAG,CACnB",
+    "sources": [
+        "../Header/Navigation.module.scss"
+    ],
+    "names": [],
+    "file": "Navigation.module.css"
+}

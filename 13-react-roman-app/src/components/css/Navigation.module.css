@@ -1,0 +1,2 @@
+.wrapper{display:-ms-grid;display:grid;-ms-grid-columns:(1fr)[3];grid-template-columns:repeat(3, 1fr)}.navItem{list-style:none}.navItemLink{text-decoration:none;color:#818181}.navItemLinkActive{font-weight:700}
+/*# sourceMappingURL=Navigation.module.css.map */

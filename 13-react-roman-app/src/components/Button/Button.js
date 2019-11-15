@@ -1,25 +1,30 @@
 import React from 'react';
 import styles from './Button.module.scss';
 
-const Button = ({ children, href }) => (
-  <>
+const Button = ({ secondary, children, href, ...props }) => {
+  
+  const buttonClass = secondary ? styles.secondary : styles.button
+  
+  return (
+    <>
     {
       href ? (
         <a
           href={href}
           target="_blank"
-          className={styles.button}
+          className={buttonClass}
           rel="noopener noreferrer"
         >
           {children}
         </a>
       ) : (
-          <button className={styles.button}>
+          <button className={buttonClass} {...props}>
             {children}
           </button>
         )
     }
   </>
-);
+  )
+};
 
 export default Button;
