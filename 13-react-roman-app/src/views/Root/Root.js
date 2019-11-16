@@ -9,41 +9,25 @@ import Header from "../../components/Header/Header";
 
 import "./Root.css";
 
-import Form from "../../components/Form/Form";
-import List from "../../components/List/List";
 import Modal from "../../components/Modal/Modal";
 
 
-const initialStateItems = [
-  {
-    image: "https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/032/square_480/oapgW_Fp_400x400.jpg",
-    name: "Dan Abramov",
-    description: "React core member",
-    twitterLink: "https://twitter.com/dan_abramov"
-  }
-];
-
 class Root extends React.Component {
   state = {
-    items: [...initialStateItems],
+    twitter: [],
+    article: [],
+    notes: [],
     isModalOpen: false,
   };
 
-  addItem = e => {
+  addItem = (e, newItem) => {
     e.preventDefault();
 
-    const newItem = {
-      name: e.target[0].value,
-      twitterLink: e.target[1].value,
-      image: e.target[2].value,
-      description: e.target[3].value
-    };
+    this.setState(prevState=>({
+      [newItem.activeOption]: [...prevState[newItem.activeOption], newItem],
+      }))
 
-    this.setState(prevState => ({
-      items: [...prevState.items, newItem]
-    }));
-
-    e.target.reset();
+    this.closeModal();
   };
 
   openModal = () => {
@@ -60,9 +44,13 @@ class Root extends React.Component {
 
   render() {
     const { isModalOpen } = this.state;
+    const contextElements = {
+      ...this.state,
+      addItem: this.addItem,
+    }
     return (
       <BrowserRouter>
-        <AppContext.Provider value={this.state}>
+        <AppContext.Provider value={contextElements}>
           <Header openModalFn={this.openModal}/>
           <h1>Hello world!</h1>
           <Switch>
